@@ -1,0 +1,1 @@
+This bot will notify you when the difference in rates on Bitfinex and bithumb exceeds the percentage you specify, after which the alerts will arrive with the specified step of growth relative to the previous result
