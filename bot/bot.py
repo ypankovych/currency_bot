@@ -10,7 +10,10 @@ bot = telebot.TeleBot(os.environ.get('token'))
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    text = '\n'.join([f'{i}: {j}%' for i, j in utils.collect().items()])
+    response = utils.collect()
+    if response.get('error'):
+        return bot.send_message(chat_id=message.chat.id, text='Error: {}'.format(response['error']))
+    text = '\n'.join([f'{i}: {j}%' for i, j in response.items()])
     bot.send_message(chat_id=message.chat.id, text=text)
 
 
